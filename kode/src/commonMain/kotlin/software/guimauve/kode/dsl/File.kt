@@ -1,7 +1,7 @@
 package software.guimauve.kode.dsl
 
 @KodeDsl
-class File internal constructor() : KodeGenerator, DeclarationContainer {
+class File internal constructor() : KodeGenerator, DeclarationContainer, FileOrDirectory {
 
     var `package` = ""
     val imports = mutableListOf<String>()
@@ -11,8 +11,13 @@ class File internal constructor() : KodeGenerator, DeclarationContainer {
         `package` = name
     }
 
-    fun import(import: String) = imports.add(import)
-    fun imports(vararg imports: String) = this.imports.addAll(imports)
+    fun import(import: String) {
+        imports.add(import)
+    }
+
+    fun imports(vararg imports: String) {
+        this.imports.addAll(imports)
+    }
 
     override fun declaration(declaration: Declaration) {
         declarations.add(declaration)

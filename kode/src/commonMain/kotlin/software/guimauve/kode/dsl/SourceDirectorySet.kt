@@ -1,7 +1,7 @@
 package software.guimauve.kode.dsl
 
 @KodeDsl
-class Package internal constructor(
+class SourceDirectorySet internal constructor(
     val name: String,
 ) : FileOrDirectory {
 
@@ -10,11 +10,11 @@ class Package internal constructor(
     val textFiles = mutableMapOf<String, TextFile>()
 
     fun `package`(name: String, init: Package.() -> Unit = {}) {
-        packages.add(Package("${this.name}.$name").apply(init))
+        packages.add(Package(name).apply(init))
     }
 
     fun file(name: String, init: File.() -> Unit = {}) {
-        files[name] = File().apply(init).apply { `package`(this@Package.name) }
+        files[name] = File().apply(init)
     }
 
     fun textFile(name: String, content: String) {
