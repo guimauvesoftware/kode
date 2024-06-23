@@ -1,3 +1,3 @@
 package software.guimauve.kode.dsl
 
-sealed interface Declaration : KodeGenerator
+sealed interface Declaration : Instruction

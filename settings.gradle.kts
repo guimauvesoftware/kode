@@ -23,10 +23,6 @@ dependencyResolutionManagement {
             // Kaccelero
             version("kaccelero", "0.2.0")
             library("kaccelero-core", "dev.kaccelero", "core").versionRef("kaccelero")
-
-            // Tests
-            library("tests-mockk", "io.mockk:mockk:1.13.11")
-            library("tests-h2", "com.h2database:h2:2.2.224")
         }
     }
 }

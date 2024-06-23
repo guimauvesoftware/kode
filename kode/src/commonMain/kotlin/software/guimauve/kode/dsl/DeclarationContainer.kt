@@ -2,8 +2,18 @@ package software.guimauve.kode.dsl
 
 interface DeclarationContainer {
 
-    val declarations: MutableList<Declaration>
+    fun declaration(declaration: Declaration)
 
-    fun declaration(declaration: Declaration) = declarations.add(declaration)
+    fun `class`(name: String, init: Class.() -> Unit = {}) =
+        declaration(Class(name).apply(init))
+
+    fun dataClass(name: String, init: Class.() -> Unit = {}) =
+        declaration(Class(name, data = true).apply(init))
+
+    fun function(name: String, init: Function.() -> Unit = {}) =
+        declaration(Function(name).apply(init))
+
+    fun variable(name: String, type: Type) =
+        declaration(Variable(name, type))
 
 }

@@ -1,11 +1,15 @@
 package software.guimauve.kode.dsl
 
 @KodeDsl
-class Class(
+class Class internal constructor(
     val name: String,
     val data: Boolean = false,
 ) : Declaration, DeclarationContainer {
 
-    override val declarations = mutableListOf<Declaration>()
+    val declarations = mutableListOf<Declaration>()
+
+    override fun declaration(declaration: Declaration) {
+        declarations.add(declaration)
+    }
 
 }
